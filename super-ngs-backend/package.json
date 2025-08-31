@@ -2,8 +2,11 @@
   "name": "super-ngs-backend",
   "version": "1.0.0",
   "description": "The backend for the super-ngs portfolio website",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
+    "start": "node server.js",
+    "dev": "npm install && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nicholas Shinn",
