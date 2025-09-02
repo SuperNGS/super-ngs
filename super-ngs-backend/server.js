@@ -4,6 +4,7 @@ import {  initializeApp } from "firebase/app";
 import { getDatabase, get, ref, child } from "firebase/database";
 import FileSystem from 'fs';
 import DataBase from './utils/database.util.js';
+import ContactRouter from './routes/contact.route.js';
 import TestRouter from './routes/test.route.js';
 
 // Initialize Express app and get the port from environment variables or default to 3000
@@ -30,7 +31,7 @@ app.listen(PORT, async () => {
 
 app.use(express.json());
 
-// Example route to test database connection
-app.use("/", TestRouter);
+app.use('/contact', ContactRouter);
+app.use("/test", TestRouter);
 
 export default app;
