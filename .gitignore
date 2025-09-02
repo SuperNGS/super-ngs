@@ -74,3 +74,10 @@ node_modules/
 # Compiled output
 /dist
 /public
+
+# Configuration files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config
