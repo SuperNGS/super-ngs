@@ -9,6 +9,8 @@ import TestRouter from './routes/test.route.js';
 // Initialize Express app and get the port from environment variables or default to 3000
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Firebase configuration and initialization
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: "super-ngs.firebaseapp.com",
@@ -17,6 +19,8 @@ const firebaseConfig = {
   credential: admin.credential.cert(JSON.parse(FileSystem.readFileSync('./config/serviceAccountKey.json', 'utf8'))),
 };
 app.locals.firebase = initializeApp(firebaseConfig);
+
+// Daatabase connection initialization
 app.locals.db = new DataBase();
 
 
