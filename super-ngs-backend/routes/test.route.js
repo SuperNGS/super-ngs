@@ -2,8 +2,8 @@ import express from 'express';
 const router = express.Router(); // Create a router instance
 
 // Simple test route to verify database connection
-router.get('/public/test', (req, res) => {
-    req.app.locals.db.get('/test').then((snapshot) => {
+router.get('/test', (req, res) => {
+    req.app.locals.db.get('/public/test').then((snapshot) => {
         if (snapshot.exists()) {
             res.json(snapshot.val());
         } else {
