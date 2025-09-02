@@ -1,8 +1,6 @@
 env:
-#- variable: ENV_VAR_NAME
-#  value: plaintext value
-#- variable: SECRET_ENV_VAR_NAME
-#  secret: cloud-secret-manager-id
+  - variable: API_KEY
+    secret: API_KEY
 
 scripts:
   buildCommand: npm install,
