@@ -36,7 +36,7 @@ class DataBase {
             this.reference = ref(getDatabase());
             console.log('Database connected');
         }
-        return get(child(this.reference, path));
+        return get(path ? child(this.reference, path) : this.reference);
     }
 }
 
