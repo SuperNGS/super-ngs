@@ -2,11 +2,9 @@ import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import FileSystem from "fs";
 export default class ContactModel {
     static async sendEmail(app, email, name, phone, message) {
-        console.log("Sending email with the following details:");
-        console.log(`Email: ${email}`);
-        console.log(`Name: ${name}`);
-        console.log(`Phone: ${phone}`);
-        console.log(`Message: ${message}`);
+        if (!email || !name || !message) {
+            throw new Error("Missing required fields: email, name, and message are required.");
+        }
 
         // Retrieve the receiver name from the database configuration
         let emailName;
