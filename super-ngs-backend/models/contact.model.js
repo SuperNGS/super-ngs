@@ -1,4 +1,5 @@
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import FileSystem from "fs";
 export default class ContactModel {
     static async sendEmail(app, email, name, phone, message) {
         console.log("Sending email with the following details:");
@@ -34,14 +35,8 @@ export default class ContactModel {
             throw err;
         });
 
-        // Retrieve the MailerSend API key from the database configuration
-        let apiKey;
-        await app.locals.db.ref("/configuration").child("/email-key").once('value', async (config) => {
-            apiKey = await config.val();
-        }).catch(err => {
-            console.error("Error retrieving email configuration:", err);
-            throw err;
-        });
+        // Read the MailerSend API key from a secure configuration file
+        const apiKey = await FileSystem.readFileSync('config/mailerSendKey.key', 'utf8')
 
         // Initialize MailerSend with the API key from configuration
         const mailerSend = new MailerSend({
