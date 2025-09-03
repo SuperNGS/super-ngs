@@ -52,9 +52,25 @@ export default class ContactModel {
         const sentFrom = new Sender(emailFrom, "Super NGS Contact Form");
 
         // Set the recipient to self
-        const recipients = [
+        let recipients = [
             new Recipient(emailTo, emailName)
         ];
+
+        let htmlMessage = `
+            <h1>New Contact Form Submission</h1>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Message:</strong> ${message}</p>
+        `;
+
+        let textMessage = `
+            New Contact Form Submission
+            Name: ${name}
+            Email: ${email}
+            Phone: ${phone}
+            Message: ${message}
+        `;
 
         // Set the email parameters from the provided input, formatting the message body
         const emailParams = new EmailParams()
@@ -62,14 +78,61 @@ export default class ContactModel {
             .setTo(recipients)
             .setReplyTo(sentFrom)
             .setSubject("New Contact Form Submission: " + name)
-            .setHtml("Greetings from the team, you got this message through MailerSend.")
-            .setText("Greetings from the team, you got this message through MailerSend.");
+            .setHtml(htmlMessage)
+            .setText(textMessage);
+
+        let success = [];
 
         // Attempt to send the email through MailerSend
         await mailerSend.email.send(emailParams).then((response) => {
-            return "Email sent successfully";
+            success[0] = "Contact form submitted successfully.";
         }).catch((error) => {
-            return error;
+            console.error("Error sending email:", error);
+            throw error;
         });
+
+        recipients = [
+            new Recipient(email, name)
+        ];
+
+        htmlMessage = `
+            <h1>Thank You for Contacting Us</h1>
+            <p>Dear ${name},</p>
+            <p>Thank you for reaching out. We have received your message and will get back to you as soon as possible.</p>
+            <br>
+            <p>Best regards,</p>
+            <p>The Super NGS Team</p>
+        `;
+
+        textMessage = `
+            Thank You for Contacting Us
+            Dear ${name},
+            Thank you for reaching out. We have received your message and will get back to you as soon as possible.
+            Best regards,
+            The Super NGS Team
+        `;
+
+        // Set the email parameters for the auto-response
+        const autoResponseParams = new EmailParams()
+            .setFrom(sentFrom)
+            .setTo(recipients)
+            .setReplyTo(sentFrom)
+            .setSubject("Thank You for Contacting Us")
+            .setHtml(htmlMessage)
+            .setText(textMessage);
+
+        // Attempt to send the auto-response email through MailerSend
+        await mailerSend.email.send(autoResponseParams).then((response) => {
+            success[1] = "Auto-response email sent successfully.";
+        }).catch((error) => {
+            console.error("Error sending auto-response email:", error);
+            throw error;
+        });
+
+        if (success && success.length == 2) {
+            return success;
+        } else {
+            throw new Error("Failed to send one or more emails.");
+        }
     }
 }
