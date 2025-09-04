@@ -11,7 +11,6 @@ export default class ContactModel {
         await app.locals.db.ref("/configuration").child("/email-name").once('value', async (config) => {
             emailName = await config.val();
         }).catch(err => {
-            console.error("Error retrieving email-name configuration:", err);
             throw err;
         });
 
@@ -20,7 +19,6 @@ export default class ContactModel {
         await app.locals.db.ref("/configuration").child("/email-to").once('value', async (config) => {
             emailTo = await config.val();
         }).catch(err => {
-            console.error("Error retrieving email-to configuration:", err);
             throw err;
         });
 
@@ -29,7 +27,6 @@ export default class ContactModel {
         await app.locals.db.ref("/configuration").child("/email-from").once('value', async (config) => {
             emailFrom = await config.val();
         }).catch(err => {
-            console.error("Error retrieving email-from configuration:", err);
             throw err;
         });
 
@@ -80,7 +77,6 @@ export default class ContactModel {
         await mailerSend.email.send(emailParams).then((response) => {
             success[0] = "Contact form submitted successfully.";
         }).catch((error) => {
-            console.error("Error sending email:", error);
             throw error;
         });
 
@@ -118,7 +114,6 @@ export default class ContactModel {
         await mailerSend.email.send(autoResponseParams).then((response) => {
             success[1] = "Auto-response email sent successfully.";
         }).catch((error) => {
-            console.error("Error sending auto-response email:", error);
             throw error;
         });
 
