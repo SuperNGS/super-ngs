@@ -1,6 +1,7 @@
 import express from 'express';
 import admin from 'firebase-admin';
 import FileSystem from 'fs';
+import { rateLimit } from 'express-rate-limit';
 import ContactRouter from './routes/contact.route.js';
 import TestRouter from './routes/test.route.js';
 
@@ -26,8 +27,16 @@ app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// Middleware to parse JSON request bodies
-app.use(express.json());
+// Rate limiting middleware to limit repeated requests to public APIs and/or endpoints
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+// Middleware to parse JSON request bodies and set up rate limiting
+app.use(express.json(), limiter);
 
 // Sets up the routes
 app.use('/contact', ContactRouter);
