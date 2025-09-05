@@ -6,7 +6,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive, RouterModule } from '@angul
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'super-ngs-frontend';
