@@ -3,6 +3,7 @@ import admin from 'firebase-admin';
 import FileSystem from 'fs';
 import { rateLimit } from 'express-rate-limit';
 import ContactRouter from './routes/contact.route.js';
+import PublicRouter from './routes/public.route.js';
 import TestRouter from './routes/test.route.js';
 
 // Initialize Express app and get the port from environment variables or default to 3000
@@ -30,7 +31,15 @@ const limiter = rateLimit({
 });
 
 // Middleware to parse JSON request bodies and set up rate limiting
-app.use(express.json(), limiter);
+app.use(
+  function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  },
+  express.json(),
+  limiter
+);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello, World!" });
@@ -38,6 +47,7 @@ app.get("/", (req, res) => {
 
 // Sets up the routes
 app.use('/contact', ContactRouter);
+app.use('/public', PublicRouter);
 app.use("/test", TestRouter);
 
 export default app;
