@@ -11,7 +11,7 @@ const app = express();
 
 // Configures Firebase Admin SDK
 const firebaseConfig = {
-  credential: admin.credential.cert(JSON.parse(FileSystem.readFileSync('./config/serviceAccountKey.json', 'utf8'))),
+  credential: admin.credential.cert(JSON.parse(process.env.SERVICE_ACCOUNT_KEY ?? FileSystem.readFileSync("./config/serviceAccountKey.json"))),
   apiKey: process.env.API_KEY,
   authDomain: "super-ngs.firebaseapp.com",
   databaseURL: "https://super-ngs-default-rtdb.firebaseio.com",
