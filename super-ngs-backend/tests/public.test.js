@@ -11,6 +11,14 @@ describe('GET /public/headshot', () => {
   });
 });
 
+// Tests if the bio route returns data
+describe('GET /public/bio', () => {
+  it('should exist', async () => {
+    const res = await request(server).get('/public/bio');
+    expect(res.statusCode).toEqual(200);
+  });
+});
+
 // Tests if the headline route returns data
 describe('GET /public/headline', () => {
   it('should exist', async () => {

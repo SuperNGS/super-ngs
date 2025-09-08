@@ -7,6 +7,14 @@ export default class PublicModel {
         });
     }
 
+    static async getBio(app) {
+        return app.locals.db.ref('/public').child('/bio').once('value', (snapshot) => {
+            return snapshot.val();
+        }).catch(err => {
+            throw err;
+        });
+    }
+
     static async getHeadline(app) {
         return app.locals.db.ref('/public').child('/headline').once('value', (snapshot) => {
             return snapshot.val();

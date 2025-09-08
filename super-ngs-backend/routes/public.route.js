@@ -5,6 +5,7 @@ const router = express.Router(); // Create a router instance
 
 // GET a link to the portfolio headshot image
 router.get('/headshot', PublicController.getHeadshot);
+router.get('/bio', PublicController.getBio)
 router.get('/headline', PublicController.getHeadline);
 router.get('/headline/name', PublicController.getHeadlineName);
 router.get('/headline/title', PublicController.getHeadlineTitle);
