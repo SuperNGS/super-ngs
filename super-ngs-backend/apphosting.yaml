@@ -25,10 +25,10 @@ runConfig:
   scripts:
     buildCommand: npm install,
     runCommand: npm start
-  env:
-    - variable: API_KEY
-      secret: API_KEY
-    - variable: SERVICE_ACCOUNT_KEY
-      secret: SERVICE_ACCOUNT_KEY
-    - variable: MAILER_SEND_KEY
-      secret: MAILER_SEND_KEY
+env:
+  - variable: API_KEY
+    secret: API_KEY
+  - variable: SERVICE_ACCOUNT_KEY
+    secret: SERVICE_ACCOUNT_KEY
+  - variable: MAILER_SEND_KEY
+    secret: MAILER_SEND_KEY
