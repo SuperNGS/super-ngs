@@ -31,7 +31,7 @@ export default class ContactModel {
         });
 
         // Read the MailerSend API key from a secure configuration file
-        const apiKey = process.env.MAILER_SEND_KEY ?? FileSystem.readFileSync('config/mailerSendKey.key', 'utf8');
+        const apiKey = process.env.MAILER_SEND_KEY ? process.env.MAILER_SEND_KEY : FileSystem.readFileSync('config/mailerSendKey.key', 'utf8');
 
         // Initialize MailerSend with the API key from configuration
         const mailerSend = new MailerSend({
