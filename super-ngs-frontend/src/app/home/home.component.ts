@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../services/home.service';
+import { PublicService } from '../services/public.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,10 @@ export class HomeComponent implements OnInit{
 
   headshotURL: string = "";
 
-  constructor(private homeService: HomeService) {}
+  constructor(private publicService: PublicService) {}
 
   ngOnInit(): void {
-    this.homeService.getHeadshot().subscribe({
+    this.publicService.getHeadshot().subscribe({
       next: (res) => {
         console.log(res);
         this.headshotURL = res;
