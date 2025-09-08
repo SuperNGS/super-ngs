@@ -17,6 +17,13 @@ export class PublicService {
     }));
   }
 
+  public getBio() {
+    return this.http.get(environment.API_URL + "/public/bio").pipe(
+      map((res: any) => {
+          return res['data'];
+    }));
+  }
+
   public getHeadline() {
     return this.http.get(environment.API_URL + "/public/headline").pipe(
       map((res: any) => {

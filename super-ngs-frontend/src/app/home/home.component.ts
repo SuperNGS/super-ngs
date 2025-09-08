@@ -11,6 +11,7 @@ import { PublicService } from '../services/public.service';
 export class HomeComponent implements OnInit{
 
   headshotURL: string = "";
+  bio: string = ``;
 
   constructor(private publicService: PublicService) {}
 
@@ -20,9 +21,18 @@ export class HomeComponent implements OnInit{
         console.log(res);
         this.headshotURL = res;
       },
-      error(err) {
+      error: (err) => {
         console.error(err);
       },
+    });
+    this.publicService.getBio().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.bio = res;
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
   }
 }
