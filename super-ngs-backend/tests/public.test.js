@@ -4,9 +4,9 @@ import app from '../app.js';
 beforeAll(() => server = app.listen(3000));
 
 // Tests if the headshot route returns data
-describe('GET /home/headshot', () => {
+describe('GET /public/headshot', () => {
   it('should exist', async () => {
-    const res = await request(server).get('/home/headshot');
+    const res = await request(server).get('/public/headshot');
     expect(res.statusCode).toEqual(200);
   });
 });

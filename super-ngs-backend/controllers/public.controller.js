@@ -1,8 +1,8 @@
-import HomeModel from '../models/home.model.js';
+import PublicModel from '../models/public.model.js';
 
-export default class HomeController {
+export default class PublicController {
     static async getHeadshot(req, res) {
-        HomeModel.getHeadshot(req.app)
+        PublicModel.getHeadshot(req.app)
             .then((data) => {
                 if (data.exists()) {
                     res.status(200).json({

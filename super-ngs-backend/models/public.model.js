@@ -1,6 +1,4 @@
-import { ref, getDownloadURL } from "firebase/storage";
-
-export default class HomeModel {
+export default class PublicModel {
     static async getHeadshot(app) {
         return app.locals.db.ref('/public').child('/headshot').once('value', (snapshot) => {
             return snapshot.val();
