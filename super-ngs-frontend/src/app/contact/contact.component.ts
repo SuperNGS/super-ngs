@@ -30,6 +30,7 @@ export class ContactComponent {
       this.contactService.sendEmail(this.contactForm.value).subscribe({
         next: (res) => {
           console.log(res);
+          this.contactForm.reset();
         },
         error: (err) => {
           console.error(err);
