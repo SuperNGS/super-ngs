@@ -20,7 +20,7 @@ export class ContactComponent {
     this.contactForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
-      phone: ['', [Validators.pattern("^[0-9]{10}$")]],
+      phone: ['', [Validators.pattern('[- +()0-9]{6,}')]],
       message: ['', [Validators.required]]
     });
   }
@@ -31,6 +31,8 @@ export class ContactComponent {
         next: (res) => {
           console.log(res);
           this.contactForm.reset();
+          this.contactForm.markAsUntouched();
+          this.contactForm.markAsPristine();
         },
         error: (err) => {
           console.error(err);
