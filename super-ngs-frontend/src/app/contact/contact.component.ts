@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators } 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +16,7 @@ export class ContactComponent {
 
   contactForm: FormGroup;
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
@@ -26,7 +27,14 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('Form submitted:', this.contactForm.value);
+      this.contactService.sendEmail(this.contactForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      })
     }
   }
 }
