@@ -6,6 +6,14 @@ h3 {
     text-align: center;
 }
 
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
 form {
   width: 50%; /* Or a specific width in pixels, e.g., 400px */
   margin: 0 auto; /* Sets top/bottom margin to 0, and left/right to auto */

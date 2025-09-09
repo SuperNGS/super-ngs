@@ -15,6 +15,8 @@ import { ContactService } from '../services/contact.service';
 export class ContactComponent {
 
   contactForm: FormGroup;
+  successfullySubmitted: boolean = false;
+  unsuccessfullySubmitted: boolean = false;
   
   constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.fb.group({
@@ -33,9 +35,13 @@ export class ContactComponent {
           this.contactForm.reset();
           this.contactForm.markAsUntouched();
           this.contactForm.markAsPristine();
+          this.successfullySubmitted = true;
+          this.unsuccessfullySubmitted = false;
         },
         error: (err) => {
           console.error(err);
+          this.successfullySubmitted = false;
+          this.unsuccessfullySubmitted = true;
         }
       })
     }

@@ -1,10 +1,16 @@
 <h2>Contact Form</h2>
 <h3><i>Please submit to get in touch!</i></h3>
+@if(successfullySubmitted) {
+    <h3 class="success"><b>Contact form submission successful!</b></h3>
+}
+@if(unsuccessfullySubmitted) {
+    <h3 class="error"><b>There was an error when submitting contact form. Please try again later.</b></h3>
+}
 <form [formGroup]="contactForm" (submit)="onSubmit()">
     <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput formControlName="email"/>
-        @if (contactForm.touched || contactForm.dirty) {
+        @if (contactForm.get('email')?.touched && contactForm.get('email')?.dirty) {
             @if (contactForm.get('email')?.hasError('required')) {
                 <mat-error>
                     Email is required.
@@ -23,7 +29,7 @@
     <mat-form-field>
             <mat-label>Name</mat-label>
             <input matInput formControlName="name"/>
-            @if (contactForm.touched || contactForm.dirty) {
+            @if (contactForm.get('name')?.touched && contactForm.get('name')?.dirty) {
                 @if (contactForm.get('name')?.hasError('required')) {
                     <mat-error>
                         Name is required.
@@ -37,7 +43,7 @@
     <mat-form-field>
         <mat-label>Phone</mat-label>
         <input matInput formControlName="phone"/>
-        @if (contactForm.dirty || contactForm.touched) {
+        @if (contactForm.get('phone')?.dirty && contactForm.get('phone')?.touched) {
             @if (contactForm.get('phone')?.hasError('pattern')) {
                 <mat-error>
                     Phone must be numeric and 10 digits.
@@ -58,7 +64,7 @@
             cdkAutosizeMaxRows="5">
         </textarea>
         
-        @if (contactForm.dirty || contactForm.touched) {
+        @if (contactForm.get('message')?.dirty && contactForm.get('message')?.touched) {
             @if (contactForm.get('message')?.hasError('required')) {
                 <mat-error>
                     Message is required.
