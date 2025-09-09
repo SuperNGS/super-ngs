@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.publicService.getHeadshot().subscribe({
       next: (res) => {
-        console.log(res);
         this.headshotURL = res;
       },
       error: (err) => {
