@@ -9,8 +9,6 @@ import TestRouter from './routes/test.route.js';
 // Initialize Express app and get the port from environment variables or default to 3000
 const app = express();
 
-console.log(process.env.SERVICE_ACCOUNT_KEY);
-
 // Configures Firebase Admin SDK
 const firebaseConfig = {
   credential: admin.credential.cert(JSON.parse(process.env.SERVICE_ACCOUNT_KEY ? process.env.SERVICE_ACCOUNT_KEY : FileSystem.readFileSync("./config/serviceAccountKey.json"))),
