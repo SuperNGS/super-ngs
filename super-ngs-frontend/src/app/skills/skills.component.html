@@ -1,1 +1,10 @@
-<p>skills works!</p>
+<mat-accordion>
+    @for(skill of skills; track skill.id) {
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                {{skill.name}}
+            </mat-expansion-panel-header>
+            <p>{{skill.description}}</p>
+        </mat-expansion-panel>
+    }
+</mat-accordion>
