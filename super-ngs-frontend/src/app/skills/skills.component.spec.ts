@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkillsComponent } from './skills.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('SkillsComponent', () => {
   let component: SkillsComponent;
@@ -8,7 +9,10 @@ describe('SkillsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkillsComponent]
+      imports: [SkillsComponent],
+      providers: [
+        provideAnimationsAsync()
+      ]
     })
     .compileComponents();
 
