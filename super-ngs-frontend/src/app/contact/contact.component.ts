@@ -17,13 +17,16 @@ export class ContactComponent {
   contactForm: FormGroup;
   successfullySubmitted: boolean = false;
   unsuccessfullySubmitted: boolean = false;
+
+  nameRegex: RegExp = /^[a-zA-Z\s'-]+$/;
+  phoneRegex: RegExp = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   
   constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required]],
-      phone: ['', [Validators.pattern('[- +()0-9]{6,}')]],
-      message: ['', [Validators.required]]
+      name: ['', [Validators.required, Validators.pattern(this.nameRegex)]],
+      phone: ['', [Validators.pattern(this.phoneRegex)]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 

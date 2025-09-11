@@ -35,6 +35,11 @@
                         Name is required.
                     </mat-error>
                 }
+                @if (contactForm.get('name')?.hasError('pattern')) {
+                    <mat-error>
+                        Name is invalid.
+                    </mat-error>
+                }
             }
     </mat-form-field>
 
@@ -68,6 +73,11 @@
             @if (contactForm.get('message')?.hasError('required')) {
                 <mat-error>
                     Message is required.
+                </mat-error>
+            }
+            @if (contactForm.get('message')?.hasError('minlength')) {
+                <mat-error>
+                    Message must be at least 10 characters;
                 </mat-error>
             }
         }
