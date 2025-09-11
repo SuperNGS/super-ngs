@@ -4,6 +4,7 @@ import FileSystem from 'fs';
 import { rateLimit } from 'express-rate-limit';
 import ContactRouter from './routes/contact.route.js';
 import PublicRouter from './routes/public.route.js';
+import SkillsRouter from './routes/skills.route.js';
 import TestRouter from './routes/test.route.js';
 
 // Initialize Express app and get the port from environment variables or default to 3000
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 // Sets up the routes
 app.use('/contact', ContactRouter);
 app.use('/public', PublicRouter);
+app.use("/skills", SkillsRouter);
 app.use("/test", TestRouter);
 
 export default app;
