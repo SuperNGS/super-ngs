@@ -1,10 +1,35 @@
 <mat-accordion>
-    @for(skill of skills; track skill.id) {
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                {{skill.name}}
-            </mat-expansion-panel-header>
-            <p>{{skill.description}}</p>
-        </mat-expansion-panel>
-    }
+    <!-- Create an expansion panel containing soft skills -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Soft Skills
+        </mat-expansion-panel-header>
+        <mat-accordion>
+            @for(skill of softSkills; track skill.id) {
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        {{skill.name}}
+                    </mat-expansion-panel-header>
+                    <p>{{skill.description}}</p>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    </mat-expansion-panel>
+
+    <!-- Create an expansion panel contaning technical skills -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Technical Skills
+        </mat-expansion-panel-header>
+        <mat-accordion>
+            @for(skill of technicalSkills; track skill.id) {
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        {{skill.name}}
+                    </mat-expansion-panel-header>
+                    <p>{{skill.description}}</p>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    </mat-expansion-panel>
 </mat-accordion>
