@@ -1,14 +1,14 @@
 <div class="headline-wrapper">
     <div class="headline-text">
-        <h1>Nicholas Shinn</h1>
-        <h3>Software Engineer</h3>
+        <h1>{{headline?.name}}</h1>
+        <h3>{{headline?.title}}</h3>
     </div>
 
     <div class="headline-logos">
-        <a href="//linkedin.com/in/super-ngs" target="_blank">
+        <a [href]="headline?.linkedin" target="_blank">
             <img src="linkedin.png" width="32" height="32">
         </a>
-        <a href="//github.com/SuperNGS" target="_blank">
+        <a [href]="headline?.github" target="_blank">
             <img src="github.png" width="32" height="32">
         </a> 
     </div>
