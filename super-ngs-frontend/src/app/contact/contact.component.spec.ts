@@ -81,16 +81,16 @@ describe('ContactComponent', () => {
 
   it('should accept valid phone numbers', () => {
     const phoneControl = component.contactForm.get('phone');
-    phoneControl?.setValue('1234567890');
+    phoneControl?.setValue('123-456-7890');
     fixture.detectChanges();
     expect(phoneControl?.valid).toBeTrue();
   });
 
   it('should reject invalid phone numbers', () => {
     const phoneControl = component.contactForm.get('phone');
-    phoneControl?.setValue('abcdefghij');
+    phoneControl?.setValue('abc-def-ghij');
     fixture.detectChanges();
-    expect(phoneControl?.valid).toBeTrue();
+    expect(phoneControl?.valid).toBeFalse();
     expect(phoneControl?.hasError('pattern')).toBeTrue();
   });
 
@@ -104,6 +104,6 @@ describe('ContactComponent', () => {
     const messageControl = component.contactForm.get('message');
     messageControl?.setValue('test');
     expect(messageControl?.valid).toBeFalse();
-    expect(messageControl?.hasError('minLength')).toBeTrue();
+    expect(messageControl?.hasError('minlength')).toBeTrue();
   });
 });
