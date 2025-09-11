@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SkillsService } from '../services/skills.service';
+import { Skills } from '../classes/skills';
 
 @Component({
   selector: 'app-skills',
@@ -8,22 +10,20 @@ import { MatExpansionModule } from '@angular/material/expansion';
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
-export class SkillsComponent {
-  skills = [
-    {
-      id: 0,
-      name: "Skill One",
-      description: "This is a description"
-    },
-    {
-      id: 1,
-      name: "Skill Two",
-      description: "This is another description"
-    },
-    {
-      id: 2,
-      name: "Skill Three",
-      description: "This is yet another description"
-    }
-  ]
+export class SkillsComponent implements OnInit {
+  skills: Skills[] = [];
+
+  constructor(private skillsService: SkillsService) {}
+
+  ngOnInit(): void {
+    this.skillsService.getSkills().subscribe({
+      next: (res) => {
+        // Convert skills object to an array and save
+        this.skills = Object.values(res);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 }
