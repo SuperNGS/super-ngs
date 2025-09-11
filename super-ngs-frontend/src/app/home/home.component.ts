@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit{
     });
     this.publicService.getBio().subscribe({
       next: (res) => {
-        console.log(res);
         this.bio = res;
       },
       error: (err) => {
