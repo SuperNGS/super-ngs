@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
+import { Headline } from '../classes/headline';
 
 @Component({
   selector: 'app-header',
@@ -15,15 +16,14 @@ export class HeaderComponent implements OnInit {
   private linkedin: string = "";
   private github: string = "";
 
+  headline?: Headline;
+
   constructor(private publicService: PublicService) {}
 
   ngOnInit() {
     this.publicService.getHeadline().subscribe({
       next: async (res) => {
-        this.name = await res.name;
-        this.title = await res.title;
-        this.linkedin = await res.linkedin;
-        this.github = await res.github;
+        this.headline = await res;
       },
       error: (err) => {
         console.error(err);
