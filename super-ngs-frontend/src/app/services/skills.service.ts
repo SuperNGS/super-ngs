@@ -10,12 +10,32 @@ export class SkillsService {
 
   constructor(private http: HttpClient) { }
 
-  public getSkills(id?: number) {
+  public getSkills() {
+    return this.http.get(environment.API_URL + "/skills").pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
+  public getSoftSkills(id?: number) {
     let params = new HttpParams();
-    if(id != undefined) {
-      params = params.set("id", id);
+    if( id != undefined ) {
+      params = params.set('id', id);
     }
-    return this.http.get(environment.API_URL + "/skills", { params: params }).pipe(
+    return this.http.get(environment.API_URL + "/skills/soft", { params: params }).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
+  public getTechnicalSkills(id?: number) {
+    let params = new HttpParams();
+    if( id != undefined ) {
+      params = params.set('id', id);
+    }
+    return this.http.get(environment.API_URL + "/skills/technical", { params: params }).pipe(
       map((res: any) => {
         return res['data'];
       })

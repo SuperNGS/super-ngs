@@ -54,7 +54,33 @@ describe('SkillsService', () => {
     req.flush(mockResponse);
   });
 
-  it('should get specific skill from the API', () => {
+  it('should get soft skills from the API', () => {
+    const mockResponse = {data: [
+      {
+        id: "0",
+        name: "Skill One",
+        description: "This is a description"
+      },
+      {
+        id: "1",
+        name: "Skill Two",
+        description: "This is another description"
+      },
+      {
+        id: "2",
+        name: "Skill Three",
+        description: "This is yet another description"
+      }
+    ]};
+
+    service.getSoftSkills().subscribe( data => expect(data).toEqual(mockResponse.data));
+
+    const req = httpTestingController.expectOne(environment.API_URL + `/skills/soft`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockResponse);
+  });
+
+  it('should get specific soft skills from the API', () => {
     const mockResponse = {data: [
       {
         id: "0",
@@ -63,9 +89,51 @@ describe('SkillsService', () => {
       }
     ]};
 
-    service.getSkills(0).subscribe( data => expect(data).toEqual(mockResponse.data));
+    service.getSoftSkills(0).subscribe( data => expect(data).toEqual(mockResponse.data));
 
-    const req = httpTestingController.expectOne(environment.API_URL + `/skills?id=0`);
+    const req = httpTestingController.expectOne(environment.API_URL + `/skills/soft?id=0`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockResponse);
+  });
+
+  it('should get technical skills from the API', () => {
+    const mockResponse = {data: [
+      {
+        id: "0",
+        name: "Skill One",
+        description: "This is a description"
+      },
+      {
+        id: "1",
+        name: "Skill Two",
+        description: "This is another description"
+      },
+      {
+        id: "2",
+        name: "Skill Three",
+        description: "This is yet another description"
+      }
+    ]};
+
+    service.getSoftSkills().subscribe( data => expect(data).toEqual(mockResponse.data));
+
+    const req = httpTestingController.expectOne(environment.API_URL + `/skills/soft`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockResponse);
+  });
+
+  it('should get specific technbical skills from the API', () => {
+    const mockResponse = {data: [
+      {
+        id: "0",
+        name: "Skill One",
+        description: "This is a description"
+      }
+    ]};
+
+    service.getTechnicalSkills(0).subscribe( data => expect(data).toEqual(mockResponse.data));
+
+    const req = httpTestingController.expectOne(environment.API_URL + `/skills/technical?id=0`);
     expect(req.request.method).toEqual('GET');
     req.flush(mockResponse);
   });
