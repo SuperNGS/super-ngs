@@ -7,7 +7,7 @@
                         {{experience.company}}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{experience.position}} ({{experience.start_date}} - {{experience.end_date}})
+                        {{experience.position}} ({{experience.start_date | date:'MMMM yyyy'}} - {{experience.end_date ? (experience.end_date | date:'MMMM yyyy') : "Present"}})
                     </mat-card-subtitle>
                     @if(experience.image) {
                         <img matCardImage [src]="experience.image" width="50" height="50">
