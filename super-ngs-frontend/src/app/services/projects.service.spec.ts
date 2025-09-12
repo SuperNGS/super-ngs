@@ -72,7 +72,7 @@ describe('ProjectsService', () => {
 
     service.getProjects(0).subscribe( data => expect(data).toEqual(mockResponse.data));
 
-    const req = httpTestingController.expectOne(environment.API_URL + `/skills/technical?id=0`);
+    const req = httpTestingController.expectOne(environment.API_URL + `/projects?id=0`);
     expect(req.request.method).toEqual('GET');
     req.flush(mockResponse);
   });
