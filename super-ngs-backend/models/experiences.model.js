@@ -7,7 +7,7 @@ export default class ExperiencesModel {
                 throw err;
             });
         } else {
-            return app.locals.db.ref('/experiences').orderBy("start_date").once('value', (snapshot) => {
+            return app.locals.db.ref('/experiences').orderByChild("start_date").once('value', (snapshot) => {
                 return snapshot.val();
             }).catch(err => {
                 throw err;
