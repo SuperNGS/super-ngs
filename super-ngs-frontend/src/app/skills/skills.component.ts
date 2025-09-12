@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatCardModule } from '@angular/material/card';
 import { SkillsService } from '../services/skills.service';
 import { Skills } from '../classes/skills';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [MatExpansionModule, MatCardModule],
+  imports: [MatExpansionModule],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
