@@ -32,3 +32,5 @@ env:
     secret: SERVICE_ACCOUNT_KEY
   - variable: MAILER_SEND_KEY
     secret: MAILER_SEND_KEY
+  - variable: SITE_KEY
+    secret: SITE_KEY
