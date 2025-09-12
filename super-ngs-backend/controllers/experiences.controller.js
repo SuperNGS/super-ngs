@@ -1,3 +1,5 @@
+import ExperiencesModel from "../models/experiences.model.js";
+
 export default class ExperiencesController {
     static async getExperiences(req, res) {
         const id = req.query?.id;
