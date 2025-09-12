@@ -1,9 +1,9 @@
 import ProjectsModel from '../models/projects.model.js';
 
 export default class ProjectsController {
-    static async getRoutes(req, res) {
+    static async getProjects(req, res) {
         const id = req.query?.id;
-        ProjectsModel.getRoutes(req.app, id)
+        ProjectsModel.getProjects(req.app, id)
         .then((data) => {
                 if (data.exists()) {
                     res.status(200).json({
