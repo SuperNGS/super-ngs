@@ -20,7 +20,7 @@ export class ExperiencesComponent implements OnInit {
   ngOnInit(): void {
     this.experiencesService.getExperiences().subscribe({
       next: (res) => {
-        this.experiences = res;
+        this.experiences = res.reverse();
       },
       error: (err) => {
         console.error(err);
