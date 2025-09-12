@@ -7,7 +7,7 @@ export default class ProjectsModel {
                 throw err;
             });
         } else {
-            return app.locals.db.ref("/projects").once('value', (snapshot) => {
+            return app.locals.db.ref("/projects").orderByChild("start_date").once('value', (snapshot) => {
                 return snapshot.val();
             }).catch((err) => {
                 throw err;
