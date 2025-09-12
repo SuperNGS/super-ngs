@@ -1,1 +1,32 @@
-<p>experiences works!</p>
+<div class="experiences-wrapper">
+    @for(experience of experiences; track experience.id) {
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title-group>
+                    <mat-card-title>
+                        {{experience.company}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{experience.position}} ({{experience.start_date}} - {{experience.end_date}})
+                    </mat-card-subtitle>
+                    @if(experience.image) {
+                        <img matCardImage [src]="experience.image" width="50" height="50">
+                    }
+                </mat-card-title-group>
+            </mat-card-header>
+                <mat-card-content>
+                    @for(point of experience.points; track point) {
+                        <p>- {{point}}</p>
+                    }
+                </mat-card-content>
+                @if(experience.link) {
+                    <mat-card-footer>
+                        <a [href]="experience.link" target="_blank">
+                            link
+                        </a>
+                    </mat-card-footer>
+                }
+            
+        </mat-card>
+    }
+</div>
