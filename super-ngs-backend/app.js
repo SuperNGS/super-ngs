@@ -3,6 +3,7 @@ import admin from 'firebase-admin';
 import FileSystem from 'fs';
 import { rateLimit } from 'express-rate-limit';
 import ContactRouter from './routes/contact.route.js';
+import ExperiencesRouter from './routes/experiences.routes.js';
 import ProjectsRouter from './routes/projects.route.js';
 import PublicRouter from './routes/public.route.js';
 import SkillsRouter from './routes/skills.route.js';
@@ -49,6 +50,7 @@ app.get("/", (req, res) => {
 
 // Sets up the routes
 app.use('/contact', ContactRouter);
+app.use('/experiences', ExperiencesRouter);
 app.use('/projects', ProjectsRouter);
 app.use('/public', PublicRouter);
 app.use("/skills", SkillsRouter);
