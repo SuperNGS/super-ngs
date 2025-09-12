@@ -1,0 +1,29 @@
+.projects-wrapper {
+    width: 75%;
+    margin: auto auto;
+
+    mat-card {
+        margin: 1rem auto;
+
+        mat-card-footer {
+            text-align: center;
+
+            a {
+                text-decoration: none;
+                color: #0072b1;
+                font-weight: 500;
+                padding: 0.25rem 0.5rem;
+                border-radius: 4px;
+            }
+
+            a:hover {
+                background-color: #e7f3ff;
+            }
+
+            a:active {
+                background-color: #0072b1;
+                color: #fff;
+            }
+        }
+    }
+}
