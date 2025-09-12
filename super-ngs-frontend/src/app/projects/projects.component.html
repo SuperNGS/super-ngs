@@ -1,0 +1,30 @@
+<div class="projects-wrapper">
+    @for(project of projects; track project.id) {
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title-group>
+                    <mat-card-title>
+                        {{project.name}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{project.type}}
+                    </mat-card-subtitle>
+                    @if(project.image) {
+                        <img matCardImage [src]="project.image" width="50" height="50">
+                    }
+                </mat-card-title-group>
+            </mat-card-header>
+                <mat-card-content>
+                    {{project.description}}
+                </mat-card-content>
+                @if(project.link) {
+                    <mat-card-footer>
+                        <a [href]="project.link" target="_blank">
+                            link
+                        </a>
+                    </mat-card-footer>
+                }
+            
+        </mat-card>
+    }
+</div>
