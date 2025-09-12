@@ -7,7 +7,7 @@
                         {{project.name}}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{project.type}}
+                        {{project.type}} ({{project.start_date | date:"MMMM yyyy"}} - {{project.end_date ? (project.end_date | date:"MMMM yyyy") : "Present"}})
                     </mat-card-subtitle>
                     @if(project.image) {
                         <img matCardImage [src]="project.image" width="50" height="50">
