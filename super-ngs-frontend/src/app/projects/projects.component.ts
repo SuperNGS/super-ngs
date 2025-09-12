@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.projectsService.getProjects().subscribe({
       next: (res) => {
-        this.projects = Object.values(res);
+        this.projects = Object.values(res.reverse());
       },
       error: (err) => {
         console.error(err);
