@@ -15,7 +15,9 @@
                 </mat-card-title-group>
             </mat-card-header>
                 <mat-card-content>
-                    {{project.description}}
+                    @for(paragraph of project.description; track paragraph) {
+                        <p>{{paragraph}}</p>
+                    }
                 </mat-card-content>
                 @if(project.link) {
                     <mat-card-footer>
