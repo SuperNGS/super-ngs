@@ -14,6 +14,10 @@ Full-stack portfolio website
 ### Install angular CLI
 * Install angular CLI v18 globally
 
+### Install node modules
+* Run `npm install` in `sudo-ngs-frontend` directory
+* Run `npm install` in `sudo-ngs-backend` directory
+
 ### Create a new firebase project
 * Create a new firebase project using the console or command-line
 * Initialize Hosting, App Hosting, Realtime Database, and optionally App Check
