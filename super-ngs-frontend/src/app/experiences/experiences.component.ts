@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Experiences } from '../classes/experiences';
 import { ExperiencesService } from '../services/experiences.service';
 import { DatePipe } from '@angular/common';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-experiences',
@@ -15,7 +16,7 @@ import { DatePipe } from '@angular/common';
 export class ExperiencesComponent implements OnInit {
   experiences: Experiences[] = [];
 
-  constructor(private experiencesService: ExperiencesService) {}
+  constructor(private experiencesService: ExperiencesService, private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.experiencesService.getExperiences().subscribe({
@@ -24,6 +25,7 @@ export class ExperiencesComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
+        this.notificationService.error("Error Loading Experiences", "There was an error while loading experiences. Please try again later.");
       }
     });
   }

@@ -5,6 +5,7 @@
             Soft Skills
         </mat-expansion-panel-header>
         <mat-accordion>
+            <!-- For each soft skill, create an expansion panel with name and description -->
             @for(skill of softSkills; track skill.id) {
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
@@ -22,6 +23,7 @@
             Technical Skills
         </mat-expansion-panel-header>
         <mat-accordion>
+            <!-- For each technical skill, create another expansion panel with given name and description -->
             @for(skill of technicalSkills; track skill.id) {
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>

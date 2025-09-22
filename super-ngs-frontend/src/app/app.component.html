@@ -1,4 +1,7 @@
+<!-- Import header component (Persistent across pages) -->
 <app-header></app-header>
+
+<!-- Create a Navbar linking to all pages (Persisten across pages) -->
 <nav>
   <a routerLink="/" routerLinkActive="true">Home</a>
   <a routerLink="/experiences" routerLinkActive="true">Experiences</a>
@@ -6,5 +9,9 @@
   <a routerLink="/projects" routerLinkActive="true">Projects</a>
   <a routerLink="/contact" routerLinkActive="true">Contact</a>
 </nav>
+
+<!-- Import NotificationComponent to be used for displaying notifications -->
 <app-notification></app-notification>
+
+<!-- Import RouterOutlet to display the routed page -->
 <router-outlet></router-outlet>

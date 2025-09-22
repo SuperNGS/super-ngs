@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Projects } from '../classes/projects';
 import { ProjectsService } from '../services/projects.service';
 import { DatePipe } from '@angular/common';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-projects',
@@ -14,7 +15,7 @@ import { DatePipe } from '@angular/common';
 export class ProjectsComponent implements OnInit {
   projects: Projects[] = [];
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(private projectsService: ProjectsService, private notificationService: NotificationService) {}
 
   ngOnInit() {
     this.projectsService.getProjects().subscribe({
@@ -23,6 +24,7 @@ export class ProjectsComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
+        this.notificationService.error("Error Loading Projects", "There was an error while loading projects. Please try again later.");
       }
     });
   }
