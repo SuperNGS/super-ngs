@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
 import { NotificationService } from '../services/notification.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [MatProgressSpinnerModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
 
-  headshotURL: string = "";
-  bio: string = ``;
+  headshotURL: string | undefined;
+  bio: string | undefined;
 
   constructor(private publicService: PublicService, private notificationService: NotificationService) {}
 
