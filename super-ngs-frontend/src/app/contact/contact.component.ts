@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { ContactService } from '../services/contact.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,13 +16,11 @@ import { ContactService } from '../services/contact.service';
 export class ContactComponent {
 
   contactForm: FormGroup;
-  successfullySubmitted: boolean = false;
-  unsuccessfullySubmitted: boolean = false;
 
   nameRegex: RegExp = /^[a-zA-Z\s'-]+$/;
   phoneRegex: RegExp = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   
-  constructor(private fb: FormBuilder, private contactService: ContactService) {
+  constructor(private fb: FormBuilder, private contactService: ContactService, private notificationService: NotificationService) {
     this.contactForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.pattern(this.nameRegex)]],
@@ -38,13 +37,11 @@ export class ContactComponent {
           this.contactForm.reset();
           this.contactForm.markAsUntouched();
           this.contactForm.markAsPristine();
-          this.successfullySubmitted = true;
-          this.unsuccessfullySubmitted = false;
+          this.notificationService.success("Submission Successful", "The submission was successful. We will be in touch shortly!");
         },
         error: (err) => {
           console.error(err);
-          this.successfullySubmitted = false;
-          this.unsuccessfullySubmitted = true;
+          this.notificationService.error("Submission Error", "There was an error while submitting. Please try again later.");
         }
       })
     }

@@ -1,11 +1,6 @@
 <h2>Contact Form</h2>
 <h3><i>Please submit to get in touch!</i></h3>
-@if(successfullySubmitted) {
-    <h3 class="success"><b>Contact form submission successful!</b></h3>
-}
-@if(unsuccessfullySubmitted) {
-    <h3 class="error"><b>There was an error when submitting contact form. Please try again later.</b></h3>
-}
+
 <form [formGroup]="contactForm" (submit)="onSubmit()">
     <mat-form-field>
         <mat-label>Email</mat-label>
