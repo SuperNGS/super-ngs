@@ -1,0 +1,23 @@
+<div class="notifications">
+    @for( notification of notifications; track notification.id) {
+        <div class="notification" [ngClass]="notification.type">
+                <div class="title">
+                    <h2 class="start">{{notification.title}}</h2>
+                    <div class="end">
+                        <button mat-icon-button
+                        (click)="closeNotification(notification)">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+            <div class="message">{{notification.message}}</div>
+        </div>
+    }
+</div>
+
+<ng-template #notificationTemplate let-notification="notification">
+
+	
+
+</ng-template>

@@ -1,0 +1,61 @@
+.notifications {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	min-width: 25rem;
+	max-width: 25rem;
+  
+	.notification {
+	  margin: 1rem;
+	  border-radius: 1rem;
+	  color: #fff;
+	  overflow: hidden;
+  
+	  .title {
+		display: inline-flex;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.6);
+		padding-left: 1rem;
+		padding-right: 1rem; 
+		font-weight: bold;
+
+		.start{
+			margin-top: auto;
+            margin-bottom: auto;
+		}
+
+		.end{
+			margin-left: auto;
+		  }
+	  }
+
+	  .message {
+		background: rgba(0, 0, 0, 0.4);
+		padding: 1rem;
+		max-height: 13rem;
+		overflow-y: auto;
+	  }
+  
+	  &.info {
+		background-color: rgba(189, 189, 189, 0.9);
+	  }
+  
+	  &.success {
+		background-color: rgba(27, 158, 119, 0.9);
+	  }
+  
+	  &.warning {
+		background-color: rgba(217, 95, 2, 0.9);
+	  }
+  
+	  &.error {
+		background-color: rgba(246, 71, 71, 0.9);
+	  }
+
+      mat-icon {
+        color: black;
+      }
+	}
+  }
+  
